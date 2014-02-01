@@ -8,14 +8,58 @@ Rationale: Because you want to be able to have stuff pre-installed when you turn
 
 Summary:
 
-1. Locate Chef recipes for AMP stack, and drush.
-2. Create a cookbook for the recipes. (Might want to simplify this and just add the recipes directly to the Vagrantfile.)
-4. Add a reference to the cookbook in your vagrant folder.
-3. Reprovision the machine with the following command:
+1. Create the folder infrastructure for your Chef configuration files.
+   - `$ mkdir -p chef-recipes/roles`
+   - `$ mkdir -p chef-recipes/cookbooks`
+2. Locate Chef cookbooks for AMP stack, drush, and Drupal-specific PHP libraries you want pre-loaded.
+   - http://community.opscode.com/cookbooks/
+3. Place downloaded cookbooks into cookbooks `chef-reciples/cookbooks`.
+4. Create a new role configuration file for your LAMP in `chef-recipes/roles` which references the recipes you want to load.
+5. Update the Vagrantfile to include:
+   - path to roles folder
+   - path to cookbooks folder
+   - overrides for any of the default settings
+6. Provision the machine to enable / set-up / trigger the Chef configuration settings:
    - $ vagrant provision
-4. Install Drupal:
+
+The machine is now configured, but does not have Drupal installed. This is on purpose. You probably have a specific Drupal project you're working on. If you don't, you can use the following instructions to set up a generic instance of Drupal.
+
+Install Drupal:
+
    - `$ vagrant ssh`
    - `$ cd /var/www`
    - `$ drush dl drupal --destination=docroot`
    - `$ cd docroot/drupal-XXX`
    - `$ drush si standard --db-url=mysql://root:root@localhost/drupal7 --db-su=root --db-su-pw=root --site-name="Drupal on Vagrant"`
+
+## Role Configuration Files:
+These files contain a list of individual recipes, and/or roles that must be run to provision a specific type of server.
+Generally there are three or four parts to them.
+
+   - name
+   - description
+   - run list (recipes and roles to add)
+   - default attributes (optional)
+
+## Vagrantfile Configuration Settings:
+Stripped down configuration file. The Vagrantfile is well commented.
+
+````
+  config.vm.provision :chef\_solo do |chef|
+     # default settings
+     chef.cookbooks_path = "path_to_cookbooks_folder"
+     chef.roles_path = "path_to_roles_folder"
+
+     # roles and recipes to load
+     # recipes are generally loaded from within roles
+     chef.add_role "name_of_role"
+     chef.add_recipe "name_of_recipe"
+
+     # overrides for settings in recipes
+     chef.json = {
+       "name_of_recipe" => {
+         "name_of_setting" => "new_value",
+       },
+     }
+  end
+````
