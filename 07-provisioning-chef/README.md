@@ -18,9 +18,10 @@ Summary:
 5. Update the Vagrantfile to include:
    - path to roles folder
    - path to cookbooks folder
+   - role to load for this server
    - overrides for any of the default settings
 6. Provision the machine to enable / set-up / trigger the Chef configuration settings:
-   - $ vagrant provision
+   - `$ vagrant provision`
 
 The machine is now configured, but does not have Drupal installed. This is on purpose. You probably have a specific Drupal project you're working on. If you don't, you can use the following instructions to set up a generic instance of Drupal.
 
