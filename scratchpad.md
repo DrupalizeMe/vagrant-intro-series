@@ -16,4 +16,4 @@ Rationale: You probably don't want to, but you can skip the provisioning steps a
 ## Lesson Title: Startup and Shutdown Scripts
 Major Objective:
 Student Self-Check Tasks:
-Rationale: I'd love a MySQL snapshot on quitting so that I could destroy my Vagrant box and not have to worry about stuff being stuck "inside" the machine.
+Rationale: I'd love a MySQL snapshot on quitting so that I could destroy my Vagrant box and not have to worry about stuff being stuck "inside" the machine. Possibly: http://askubuntu.com/questions/48746/how-to-configure-shutdown-tasks
