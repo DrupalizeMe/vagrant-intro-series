@@ -27,8 +27,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # argument is a set of non-required options.
   config.vm.synced_folder "public", "/var/www"
 
-  # Enable provisioning with chef solo, specifying a cookbooks path, roles
-  # path, and data_bags path (all relative to this Vagrantfile)
+  # Enable provisioning with chef solo, specifying paths for cookbooks and roles
+  # (relative to this Vagrantfile)
   #
   config.vm.provision :chef_solo do |chef|
      
@@ -61,10 +61,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      # Recipes need to be downloaded, and added to chef-recipes/cookbooks
      # chef.add_recipe "mysql"
 
-     # Data Bags: global variables, stored in json, and often contain
-     # sensitive information, such as passwords
-     # chef.data_bags_path = "chef-recipes/data_bags"
-  
   end
 
 end
