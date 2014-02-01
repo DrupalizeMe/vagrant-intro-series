@@ -1,0 +1,70 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # All Vagrant configuration is done here. The most common configuration
+  # options are documented and commented below. For a complete reference,
+  # please see the online documentation at vagrantup.com.
+
+  # Every Vagrant virtual environment requires a box to build off of.
+  config.vm.box = "ringtail64"
+
+  # The url from where the 'config.vm.box' box will be fetched if it
+  # doesn't already exist on the user's system.
+  config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-amd64-vagrant-disk1.box"
+
+  # Create a forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine. In the example below,
+  # accessing "localhost:8080" will access port 80 on the guest machine.
+  config.vm.network :forwarded_port, guest: 80, host: 4567
+
+  # Share an additional folder to the guest VM. The first argument is
+  # the path on the host to the actual folder. The second argument is
+  # the path on the guest to mount the folder. And the optional third
+  # argument is a set of non-required options.
+  config.vm.synced_folder "public", "/var/www"
+
+  # Enable provisioning with chef solo, specifying a cookbooks path, roles
+  # path, and data_bags path (all relative to this Vagrantfile)
+  #
+  config.vm.provision :chef_solo do |chef|
+     
+     # Cookbooks: a collection of recipes used to configure a machine ("node").
+     chef.cookbooks_path = "chef-recipes/cookbooks"
+
+     # Roles: used to define which servers get what cookbooks.
+     # Each role consists of zero (or more) config details ("attributes")
+     # and a run list of recipes to execute.
+     chef.roles_path = "chef-recipes/roles"
+     
+     # The name of the role file must be the same as the role name. 
+     # For example the web role must be in the roles_path as web.json 
+     # or web.rb. This is required by Chef itself, and isn't a limitation 
+     # imposed by Vagrant.
+     chef.add_role "drupal_lamp_stack"
+
+     # override the settings for any of your recipes
+     chef.json = {
+       "apache" => { 
+         "docroot_dir" => "/var/www/docroot",
+         "default_site_enabled" => "true",
+       },
+       "mysql" => { 
+         "server_root_password" => "root", 
+       },
+     }
+
+     # Additional recipes to execute (in order!)
+     # Recipes need to be downloaded, and added to chef-recipes/cookbooks
+     # chef.add_recipe "mysql"
+
+     # Data Bags: global variables, stored in json, and often contain
+     # sensitive information, such as passwords
+     # chef.data_bags_path = "chef-recipes/data_bags"
+  
+  end
+
+end
