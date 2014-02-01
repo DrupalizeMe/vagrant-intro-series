@@ -13,3 +13,9 @@ Summary:
 4. Add a reference to the cookbook in your vagrant folder.
 3. Reprovision the machine with the following command:
    - $ vagrant provision
+4. Install Drupal:
+   - `$ vagrant ssh`
+   - `$ cd /var/www`
+   - `$ drush dl drupal --destination=docroot`
+   - `$ cd docroot/drupal-XXX`
+   - `$ drush si standard --db-url=mysql://root:root@localhost/drupal7 --db-su=root --db-su-pw=root --site-name="Drupal on Vagrant"`

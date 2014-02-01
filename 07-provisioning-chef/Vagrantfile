@@ -43,8 +43,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      # The name of the role file must be the same as the role name. 
      # For example the web role must be in the roles_path as web.json 
      # or web.rb. This is required by Chef itself, and isn't a limitation 
-     # imposed by Vagrant.
-     chef.add_role "drupal_lamp_stack"
+     # imposed by Vagrant. You can choose from a LAMP stack, or a LAMP stack
+     # with Drupal dev tools and Drupal-specific PHP libraries. 
+     # The Drupal LAMP Stack (damp_stack) is selected by default.
+     # chef.add_role "lamp_stack"
+     chef.add_role "damp_stack"
 
      # override the settings for any of your recipes
      chef.json = {
@@ -59,8 +62,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
      # Additional recipes to execute (in order!)
      # Recipes need to be downloaded, and added to chef-recipes/cookbooks
-     # chef.add_recipe "mysql"
-
+     # chef.add_recipe "recipe_name"
+  
   end
 
 end
