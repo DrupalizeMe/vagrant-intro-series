@@ -64,3 +64,8 @@ Stripped down configuration file. The Vagrantfile is well commented.
      }
   end
 ````
+
+## Gotchas
+
+- Apt will only run if the cache is older than a day. The first time the machine is provisioned, this *might* be a problem. You can force updating the cache
+  with the following setting in Vagrantfile `chef.json = { "apt" => {"compiletime" => true} }`
