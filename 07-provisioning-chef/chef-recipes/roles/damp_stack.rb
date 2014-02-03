@@ -7,5 +7,4 @@ run_list(
   "recipe[php::module_mysql]",
   "recipe[imagemagick]",
   "recipe[drush]",
-  "recipe[drush_make]",
 )
