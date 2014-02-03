@@ -56,7 +56,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
          "default_site_enabled" => "true",
        },
        "mysql" => { 
-         "server_root_password" => "root", 
+         "server_root_password" => "root",
+         "server_repl_password" => "root",
+         "server_debian_password" => "root",
        },
      }
 
