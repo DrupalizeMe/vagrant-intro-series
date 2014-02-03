@@ -6,5 +6,6 @@ run_list(
   "recipe[php::module_gd]",
   "recipe[php::module_mysql]",
   "recipe[imagemagick]",
+  "recipe[git]",
   "recipe[drush]",
 )
