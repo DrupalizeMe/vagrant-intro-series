@@ -1,6 +1,8 @@
+# 
 # Author:: Mark Sonnabaum <mark.sonnabaum@acquia.com>
-# Cookbook Name::  drush
-# Recipe:: default
+# Contributor:: Patrick Connolly <patrick@myplanetdigital.com>
+# Cookbook Name:: drush
+# Recipe:: install_console_table
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,26 +17,6 @@
 # limitations under the License.
 #
 
-case node[:platform]
-when "debian", "ubuntu"
-  git "/usr/share/drush" do
-    repository "git://git.drupal.org/project/drush.git"
-    reference "8.x-6.x"
-    action :sync
-  end
-  
-  bash "make-drush-symlink" do
-    code <<-EOH
-    (ln -s /usr/share/drush/drush /usr/bin/drush)
-    EOH
-    not_if { File.exists?("/usr/bin/drush") }
-    only_if { File.exists?("/usr/share/drush/drush") }
-  end
-
-  bash "install-console-table" do
-    code <<-EOH
-    (pear install Console_Table)
-    EOH
-    not_if "pear list| grep Console_Table"
-  end
+php_pear "Console_Table" do
+  action :install
 end
