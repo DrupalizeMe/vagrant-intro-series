@@ -8,6 +8,10 @@ Rationale: Because you want to be able to have stuff pre-installed when you turn
 
 Summary:
 
+1. Update Chef with the omnibus plugin for Vagrant. On the host machine, install the plugin:
+   - `$ vagrant plugin install vagrant-omnibus`
+   - Vagrantfile before Chef is run:
+     `config.omnibus.chef_version = :latest`
 1. Create the folder infrastructure for your Chef configuration files.
    - `$ mkdir -p chef-recipes/roles`
    - `$ mkdir -p chef-recipes/cookbooks`

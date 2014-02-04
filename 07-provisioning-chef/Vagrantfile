@@ -27,6 +27,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # argument is a set of non-required options.
   config.vm.synced_folder "public", "/var/www"
 
+  # Upgrade Chef before proceeding
+  # For this to work you must have installed the vagrant omnibus plugin.
+  # $ vagrant plugin install vagrant-omnibus
+  # config.omnibus.chef_version = "10.30.2"
+
   # Enable provisioning with chef solo, specifying paths for cookbooks and roles
   # (relative to this Vagrantfile)
   #
