@@ -8,23 +8,18 @@ Rationale: Because you want to be able to have stuff pre-installed when you turn
 
 Summary:
 
-1. Update Chef with the omnibus plugin for Vagrant. On the host machine, install the plugin:
-   - `$ vagrant plugin install vagrant-omnibus`
-   - Vagrantfile before Chef is run:
-     `config.omnibus.chef_version = :latest`
-1. Create the folder infrastructure for your Chef configuration files.
-   - `$ mkdir -p chef-recipes/roles`
-   - `$ mkdir -p chef-recipes/cookbooks`
-2. Locate Chef cookbooks for AMP stack, drush, and Drupal-specific PHP libraries you want pre-loaded.
+Working from scratch:
+
+1. Locate Chef cookbooks for AMP stack, drush, and Drupal-specific PHP libraries you want pre-loaded.
    - http://community.opscode.com/cookbooks/
-3. Place downloaded cookbooks into cookbooks `chef-reciples/cookbooks`.
-4. Create a new role configuration file for your LAMP in `chef-recipes/roles` which references the recipes you want to load.
-5. Update the Vagrantfile to include:
-   - path to roles folder
+2. Place downloaded cookbooks into a sub-folder in your project directory. For example: `chef-recipes/cookbooks`.
+3. Create a role file to include all of the recipes (from each of the cookbooks) you want to load. This file can be placed into its own roles sub-directory. For example: `chef-recipes/roles/lamp_stack.rb`.
+4. Update the Vagrantfile to include:
    - path to cookbooks folder
-   - role to load for this server
-   - overrides for any of the default settings
-6. Provision the machine to enable / set-up / trigger the Chef configuration settings:
+   - path to roles folder
+   - role(s) to load for this server
+   - new values for any of the default settings for your recipes
+5. Provision the machine to enable / set-up / trigger the Chef configuration settings:
    - `$ vagrant provision`
 
 The machine is now configured, but does not have Drupal installed. This is on purpose. You probably have a specific Drupal project you're working on. If you don't, you can use the following instructions to set up a generic instance of Drupal.
@@ -32,9 +27,9 @@ The machine is now configured, but does not have Drupal installed. This is on pu
 Install Drupal:
 
    - `$ vagrant ssh`
-   - `$ cd /var/www`
-   - `$ drush dl drupal --destination=docroot`
-   - `$ cd docroot/drupal-XXX`
+   - `$ cd /var/www/docroot`
+   - `$ drush dl drupal`
+   - `$ cd drupal-XXX`
    - `$ drush si standard --db-url=mysql://root:root@localhost/drupal7 --db-su=root --db-su-pw=root --site-name="Drupal on Vagrant"`
 
 ## Role Configuration Files:
@@ -44,7 +39,7 @@ Generally there are three or four parts to them.
    - name
    - description
    - run list (recipes and roles to add)
-   - default attributes (optional)
+   - default settings for recipes (optional)
 
 ## Vagrantfile Configuration Settings:
 Stripped down configuration file. The Vagrantfile is well commented.
@@ -73,3 +68,4 @@ Stripped down configuration file. The Vagrantfile is well commented.
 
 - Apt will only run if the cache is older than a day. The first time the machine is provisioned, this *might* be a problem. You can force updating the cache
   with the following setting in Vagrantfile `chef.json = { "apt" => {"compiletime" => true} }`
+- You may want to update Chef with the omnibus plugin for Vagrant if the cookbook you want to add requires a newer version of Chef. On the host machine, install the plugin: `$ vagrant plugin install vagrant-omnibus`. And edit the Vagrantfile to add the following: `config.omnibus.chef_version = :latest`. Note: Chef must be updated before it is "run".
