@@ -4,7 +4,6 @@ run_list(
   "role[lamp_stack]",
   "recipe[php::module_curl]",
   "recipe[php::module_gd]",
-  "recipe[php::module_mysql]",
   "recipe[imagemagick]",
   "recipe[git]",
   "recipe[drush]",

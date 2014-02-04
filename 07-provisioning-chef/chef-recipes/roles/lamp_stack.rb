@@ -8,6 +8,7 @@ run_list(
   "recipe[apache2::mod_php5]",
   "recipe[apache2::mod_rewrite]",
   "recipe[mysql::server]",
+  "recipe[php::module_mysql]",
 )
 default_attributes(
   :php5 => {
