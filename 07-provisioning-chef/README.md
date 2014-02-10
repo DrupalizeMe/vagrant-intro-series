@@ -6,9 +6,10 @@ Student Self-Check Tasks: I can issue *drush* commands necessary to install Drup
 
 Rationale: Because you want to be able to have stuff pre-installed when you turn on the machine. It's not necessary, but who wants to apt-get all the things? Hint: not me. The scripts we'll install will get you AMP (you already have Linux); and drush.
 
-Summary:
 
-Working from scratch:
+## Working from scratch:
+
+Summary:
 
 1. Locate Chef cookbooks for AMP stack, drush, and Drupal-specific PHP libraries you want pre-loaded.
    - http://community.opscode.com/cookbooks/
@@ -22,15 +23,7 @@ Working from scratch:
 5. Provision the machine to enable / set-up / trigger the Chef configuration settings:
    - `$ vagrant provision`
 
-The machine is now configured, but does not have Drupal installed. This is on purpose. You probably have a specific Drupal project you're working on. If you don't, you can use the following instructions to set up a generic instance of Drupal.
-
-Install Drupal:
-
-   - `$ vagrant ssh`
-   - `$ cd /var/www/docroot`
-   - `$ drush dl drupal`
-   - `$ cd drupal-XXX`
-   - `$ drush si standard --db-url=mysql://root:root@localhost/drupal7 --db-su=root --db-su-pw=root --site-name="Drupal on Vagrant"`
+The machine is now configured, but does not have Drupal installed. This is on purpose. You probably have a specific Drupal project you're working on. 
 
 ## Role Configuration Files:
 These files contain a list of individual recipes, and/or roles that must be run to provision a specific type of server.
