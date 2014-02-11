@@ -47,5 +47,5 @@ you with the best learning experience.
 These lessons are not part of the main sequence of lessons, but might prove useful
 for troubleshooting purposes.
 
-- [Upgrading Vagrant](extras-01-upgrading-vagrant/README.md)
+- [Updating Vagrant](extras-01-upgrading-vagrant/README.md)
 - [Using SSH on Windows](extras-02-windows-ssh/README.md)

@@ -1,4 +1,4 @@
-# Lesson Title: Upgrading Vagrant 
+# Lesson Title: Updating Vagrant 
 
 Major Objective: By the end of this lesson, you will be able to remove relevant Vagrant from your system to prepare yourself for a clean installation.
 
