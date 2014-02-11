@@ -1,4 +1,4 @@
-# Lesson Title: Install Drupal with Drush 
+# Lesson Title: Installing Drupal with Drush 
 
 Major Objective: By the end of this lesson you will be able to install Drupal via Drush from within your Vagrant instance.
 
