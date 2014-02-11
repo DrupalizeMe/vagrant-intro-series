@@ -1,4 +1,4 @@
-# Lesson Title: Provisioning With Chef
+# Lesson Title: Provisioning with Chef
 
 Major Objective: By the end of this lesson you will be able to add a Chef recipe, and re-provision Vagrant.
 
