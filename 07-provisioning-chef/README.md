@@ -1,15 +1,24 @@
 # Lesson Title: Provisioning with Chef
 
-Major Objective: By the end of this lesson you will be able to add a Chef recipe, and re-provision Vagrant.
+## Rationale
 
-Student Self-Check Tasks: I can issue *drush* commands necessary to install Drupal.
+Because you want to be able to have stuff pre-installed when you turn on the machine. It's not necessary, but who wants to apt-get all the things? Hint: not me. The scripts we'll install will get you AMP (you already have Linux); and drush.
 
-Rationale: Because you want to be able to have stuff pre-installed when you turn on the machine. It's not necessary, but who wants to apt-get all the things? Hint: not me. The scripts we'll install will get you AMP (you already have Linux); and drush.
+## Lesson Outcomes
 
+### Major Objective
 
-## Working from scratch:
+By the end of this lesson you will be able to add a Chef recipe, and re-provision Vagrant.
 
-Summary:
+### Student Self-Check Tasks
+
+I can issue *drush* commands necessary to install Drupal.
+
+## Lesson Summary
+
+In the video, I've already setup Chef recipes, roles, and cookbooks for you. So instead of having to download all the pieces separately, you can just start with this repository. The outline here, however, includes each of the steps that I went through to prepare the configuration Chef recipes and roles that you're downloading.
+
+### Assembling Chef Cookbooks
 
 1. Locate Chef cookbooks for AMP stack, drush, and Drupal-specific PHP libraries you want pre-loaded.
    - http://community.opscode.com/cookbooks/
@@ -25,8 +34,9 @@ Summary:
 
 The machine is now configured, but does not have Drupal installed. This is on purpose. You probably have a specific Drupal project you're working on. 
 
-## Role Configuration Files:
-These files contain a list of individual recipes, and/or roles that must be run to provision a specific type of server.
+### Configuration Files
+
+The role files contain a list of individual recipes, and/or roles that must be run to provision a specific type of server.
 Generally there are three or four parts to them.
 
    - name
@@ -34,11 +44,13 @@ Generally there are three or four parts to them.
    - run list (recipes and roles to add)
    - default settings for recipes (optional)
 
-## Vagrantfile Configuration Settings:
-Stripped down configuration file. The Vagrantfile is well commented.
+You should investigate the contents of the folder `chef-recipes/roles`. There is a detailed README tailored to this learning series, as well as the two roles that were
+created for this lesson.
+
+The Vagrantfile is well commented, this section includes a quick references of the settings that have been updated in the file.
 
 ````
-  config.vm.provision :chef\_solo do |chef|
+  config.vm.provision :chef_solo do |chef|
      # default settings
      chef.cookbooks_path = "path_to_cookbooks_folder"
      chef.roles_path = "path_to_roles_folder"
@@ -57,7 +69,7 @@ Stripped down configuration file. The Vagrantfile is well commented.
   end
 ````
 
-## Gotchas
+### Gotchas
 
 - Apt will only run if the cache is older than a day. The first time the machine is provisioned, this *might* be a problem. You can force updating the cache
   with the following setting in Vagrantfile `chef.json = { "apt" => {"compiletime" => true} }`

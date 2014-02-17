@@ -1,21 +1,25 @@
 # Lesson Title: Installing Vagrant and VirtualBox
 
-Rationale: 
+## Rationale
 
 Before we jump into the automation of creating a new developer environment, we need to get the building blocks we'll be working with. You will need to download and install both [Vagrant](http://vagrantup.com) and [VirtualBox](http://virtualbox.org).
 
 You might use a number of different provisioning scripts, or configuration options, or etc, but you need to start with the software installed. "Anything hard should be practiced, not avoided." Try to get into the habit of creating robust, repeatable decisions instead of a brittle infrastructure that can't be easily recreated.
 
-Major Objective: By the end of this lesson, you will be able to install Vagrant and VirtualBox on a host platform of OSX, or Windows; and create and destroy a Vagrant instance.
+## Lesson Outcomes
 
-Student Self-Check Tasks: 
+### Major Objective
+
+By the end of this lesson, you will be able to install Vagrant and VirtualBox on a host platform of OSX, or Windows; and create and destroy a Vagrant instance.
+
+### Student Self-Check Tasks
 
 - locate command line; 
 - successfully initialize a directory for use with Vagrant (confirm that the file Vagrantfile has been created); 
 - successfully intialize a new VM (confirm no fatal errors when running `vagrant up` and ensure a new binary was created in your virtual machines folder); 
 - successfully destroy a vagrant instance (confirm the binary file was deleted from the VirtualBox binary folder).
 
-Summary:
+## Lesson Summary
 
 1. Install VirtualBox
 2. Install Vagrant
@@ -32,7 +36,7 @@ Summary:
    - `$ vagrant destroy`
    This command must be run from the directory which contains the Vagrantfile for the box you wish to destroy. It will not remove any of your configuration files, to recreate the machine, use the commands in step 4.
 
-Gotchas:
+### Gotchas
 
 There are some gotchas to be aware of:
 
@@ -40,7 +44,7 @@ There are some gotchas to be aware of:
 - Sometimes upgrades don't work, and re-installing is your best bet. If you have automatic software updates turned on, and Vagrant stops working for you without an obvious
   reason, try removing everything and re-install using the instructions in this lesson. Removing Vagrant and VirtualBox are covered in one of the extra lessons.
 
-Resources:
+## Resources
 
 - https://www.virtualbox.org/wiki/Downloads
 - http://www.vagrantup.com/downloads.html

@@ -1,12 +1,21 @@
 # Lesson Title: Adding a Web Server
 
-Major Objective: By the end of this lesson, you will be able to log into your virtual machine, and use the command line to install new software.
+## Rationale
 
-Student Self-Check Tasks: Log into the server via SSH. Add an AMP stack.
+This is something that ultimately we want to have in a provisioning script, but this shows you the virtual machine is just like any other server you might have worked with in the past. Any time you want to add new software, you can always come back to this lesson if you (for some reason) don't want to create a recipe and re-provision your machine. Hopefully by the end of this series you'll see why you should never *want* to use this method again.
 
-Rationale: This is something that ultimately we want to have in a provisioning script, but this shows you the virtual machine is just like any other server you might have worked with in the past. Any time you want to add new software, you can always come back to this lesson if you (for some reason) don't want to create a recipe and re-provision your machine. Hopefully by the end of this series you'll see why you should never *want* to use this method again.
+## Lesson Outcomes
 
-Summary:
+### Major Objective
+
+By the end of this lesson, you will be able to log into your virtual machine, and use the command line to install new software.
+
+### Student Self-Check Tasks
+
+- Log into the server via SSH
+- Add an AMP stack.
+
+## Lesson Summary
 
 If you don't want to start with the Ubuntu LTS (precise32) base box, you can choose a different one.
 
@@ -20,20 +29,22 @@ Ensure your server is up and running, and then log in with vagrant ssh. This mus
 
 Install an AMP server using the directions for your base box. We'll use the same technique as is covered in Addi's lesson "Installing a Web Server on Ubuntu".
 
-   - `$ sudo apt-get install tasksel`
-   - `$ sudo tasksel install lamp-server`
+- `$ sudo apt-get install tasksel`
+- `$ sudo tasksel install lamp-server`
 
 This will install Apache, MySQL, and PHP.
 
 To confirm the server is running, use the command: `pstree`.
 
-Gotchas:
-  - OSX can use vagrant ssh; Windows will need to install PuTTY and use ssh vagrant.
-  - If you get the error `tasksel: aptitude failed (100)`, run the command `sudo apt-get update` and then run
-    `sudo tasksel install lamp-server` again. This happened on precise32 base box with a Windows 8 host running
-    inside of Parallels on a Mac OSX machine.
+### Gotchas
 
-Resources:
+- OSX can use vagrant ssh; Windows will need to install PuTTY and use ssh vagrant.
+- If you get the error `tasksel: aptitude failed (100)`:
+  1. `$ sudo apt-get update`
+  2. `$ sudo tasksel install lamp-server` 
+(I got this error on a precise32 base box with a Windows 8 host running inside of Parallels on a Mac OSX machine.)
 
-- Installing a Web Server on Ubuntu: http://drupalize.me/videos/installing-web-server-ubuntu
-- SSH tutorial: need to record a PuTTY intro for Windows
+## Resources
+
+- [Installing a Web Server on Ubuntu](http://drupalize.me/videos/installing-web-server-ubuntu)
+- [SSH tutorial](../extras-02-windows-ssh/README.md)
