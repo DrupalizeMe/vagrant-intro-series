@@ -18,17 +18,16 @@ After enabling file sharing, you should be able to copy a file into the shared f
 
 As long as you're using basic file sharing (no NFS), it should work "out of the box" for Windows 8, and OSX.
 
-1. Configure synced folder in Vagrantfile. Change:
-   `# config.vm.synced_folder "../data", "/vagrant_data"`
-   to
-   `config.vm.synced_folder "docroot", "/var/www"`
+1. Configure synced folder in Vagrantfile.
+   - Locate and remove: `# config.vm.synced_folder "../data", "/vagrant_data"`
+   - In its place, add: `config.vm.synced_folder "docroot", "/var/www"`
 2. Create a new directory using the name identified in the file Vagrantfile.
-   `$ mkdir docroot`
+   - `$ mkdir docroot`
 3. Reload the vagrant instance (and restart the server). The contents of `/var/www` will appear in `docroot`.
-   `$ vagrant reload`
-   `$ vagrant ssh`
-   `$ sudo /etc/init.d/apache start`
-   `$ exit`
+  - `$ vagrant reload`
+  - `$ vagrant ssh`
+  - `$ sudo /etc/init.d/apache start`
+  - `$ exit`
 4. Edit the Web page from the host machine.
 5. Refresh the browser to see the changed file.
 

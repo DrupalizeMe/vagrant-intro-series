@@ -22,7 +22,9 @@ If you don't want to start with the Ubuntu LTS (precise32) base box, you can cho
 1. Navigate to www.vagrantbox.es.
 2. Locate a base box you would like to use. Ensure you are matching the "provider" to what you have. e.g. VirtualBox for these lessons (not VMware).
 3. At the command lines, initialize your new server:
-   - `$ vagrant init ringtail64 http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-amd64-vagrant-disk1.box`
+   - `$ vagrant init <box name> <box URL>`
+     - box name: ringtail64 
+     - box URL (mind the line wrap): http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-amd64-vagrant-disk1.box
    - `$ vagrant up`
 
 Ensure your server is up and running, and then log in with vagrant ssh. This must be done from the directory which contains the file Vagrantfile.
