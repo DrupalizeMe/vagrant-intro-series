@@ -33,12 +33,10 @@ As long as you're using basic file sharing (no NFS), it should work "out of the 
 
 ### Gotchas
 
-- If you are having problems with file permissions / ownership, try editing
-the permisisons from the host machine, not the guest machine. This is
-most noticeable when you are creating a new Drupal instance and there are
-folders / files created automatically by the system. Vagrant won't give a
-warning to explain why it won't change permissions, it simply doesn't
-show any changes after running chommands such as: `chmod +w
-<directory_name>`. Note: add instructions on how to set/reset the file
-owners on shared files to relieve some of the problems around
-permissions.
+- If you are having problems with file permissions / ownership, try editing the permisisons from the host machine, not the guest machine. This is most noticeable when you are creating a new Drupal instance and there are folders / files created automatically by the system. Vagrant won't give a warning to explain why it won't change permissions, it simply doesn't show any changes after running chommands such as: `chmod +w <directory_name>`. Note: add instructions on how to set/reset the file owners on shared files to relieve some of the problems around permissions.
+- If you are still having problems with silent file permissions, update your Vagrantfile as follows:
+  1. Locate the setting for `config.vm.synced_folder`
+  2. Add a server-friendly owner, by adding the following to the end: `, :owner => "www-data"`
+  3. Add a server-friendly group, by adding the following to the end: `, :group => "www-data"`
+  The final line should be something like this:
+  ````config.vm.synced_folder "docroot", "/var/www", :owner => "www-data", :group => "www-data"````
