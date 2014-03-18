@@ -2,10 +2,9 @@
 
 ## Rationale
 
-Not automating the installation of Drupal on our vagrant instance is *by design*. It gives us the ability to quick spin up new machines and then put any version of Drupal
-onto them. It also allows us to use a single server for multiple Drupal projects (just as you would with a MAMP or WAMP environment). In this lesson you will learn how to
-install Drupal from the command line using Drush. If you already know how to do this, you should review the Lesson Summary, but you are not required to watch the video as it
-will be entirely review for you.
+Not automating the installation of Drupal on our vagrant instance is *by design*. It gives us the ability to quick spin up new machines and then put any version of Drupal onto them. It also allows us to use a single server for multiple Drupal projects (just as you would with a MAMP or WAMP environment). In this lesson you will learn how to install Drupal from the command line using Drush. If you already know how to do this, you should review the Lesson Summary, but you are not required to watch the video as it will be entirely review for you.
+
+Note: The Chef recipe we're using supports Drupal 6 and Drupal 7, but not Drupal 8. You'll need to update Drush first if you want to use these instructions to install Drupal 8.
 
 ## Lesson Outcomes
 
