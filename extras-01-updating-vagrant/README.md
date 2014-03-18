@@ -13,3 +13,8 @@ By the end of this lesson, you will be able to remove relevant Vagrant from your
 ### Student Self-Check Tasks
 
 When I perform an "upgrade" I walk through the installation process as if I had never installed Vagrant on my system.
+
+## Notes
+
+Follow the instructions at:
+https://docs.vagrantup.com/v2/installation/uninstallation.html
