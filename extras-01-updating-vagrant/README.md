@@ -16,5 +16,8 @@ When I perform an "upgrade" I walk through the installation process as if I had 
 
 ## Notes
 
-Follow the instructions at:
+For Vagrant, follow the instructions at:
 https://docs.vagrantup.com/v2/installation/uninstallation.html
+
+For VirtualBox, follow the instructions at:
+http://www.virtualbox.org/manual/ch02.html
